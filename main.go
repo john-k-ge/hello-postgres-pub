@@ -173,34 +173,12 @@ func init() {
 }
 
 func main() {
-	//appEnv, _ := cfenv.Current()
-	//
-	//myService = cfServiceDiscovery.ServiceDescriptor{
-	//	AppName:     appEnv.Name,
-	//	AppUri:      appEnv.ApplicationURIs[0],
-	//	ServiceName: os.Getenv("SERVICE_NAME"),
-	//	PlanName:    os.Getenv("SERVICE_PLAN"),
-	//}
-	//
-	//services := appEnv.Services
-	//if len(services) > 0 {
-	//	fmt.Printf("RDPG ServiceTag = %v\n", myService.ServiceName)
-	//	pgServices, err := services.WithLabel(myService.ServiceName)
-	//
-	//	if err != nil || len(pgServices) <= 0 {
-	//		log.Println("No Postgres service found!!")
-	//		return
-	//	}
-	//
-	//	pgUrL = pgServices[0].Credentials["uri"].(string)
-	//}
-
 	fmt.Println("Starting...")
 	port := os.Getenv("PORT")
-	log.Printf("Listening on port %v", port)
 	if len(port) == 0 {
 		port = "9000"
 	}
+	log.Printf("Listening on port %v", port)
 
 	//dbCall()
 	http.HandleFunc("/info", serviceDescriptor)
